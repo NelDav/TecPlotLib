@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       -= gui core
+QT       -= gui
 
 TARGET = TecPlot
 TEMPLATE = lib
@@ -26,11 +26,13 @@ INCLUDEPATH += \
         src
 
 SOURCES += \
-        src/tecplot.cpp
+        src/tecplot.cpp \
+    src/teczone.cpp
 
 HEADERS += \
         src/tecplot.h \
-        src/tecplot_global.h
+        src/tecplot_global.h \
+    src/teczone.h
 
 unix {
     target.path = /usr/lib

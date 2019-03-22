@@ -4,3 +4,9 @@
 TecPlot::TecPlot()
 {
 }
+
+bool
+TecPlot::readFile(QFile file)
+{
+
+}
