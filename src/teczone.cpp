@@ -184,7 +184,7 @@ TecZone::data1D(QString param, int axisPosition, Axis returnAxis) //if dimension
     {
         return m_2dData[param][axisPosition];
     }
-    else
+    else if(returnAxis == Axis::J)
     {
         QVector<double> retval;
 
@@ -195,6 +195,8 @@ TecZone::data1D(QString param, int axisPosition, Axis returnAxis) //if dimension
 
         return retval;
     }
+    else
+        return QVector<double>();
 }
 
 QVector<double>
@@ -209,29 +211,83 @@ TecZone::data1D(QString param, int firstAxisPosition, int seccondAxisPosition, A
     }
     else if(returnAxis == Axis::J)
     {
-        QVector<double> retval;
-        foreach (QVector<double> jLine, m_3dData[param][seccondAxisPosition])
+        QVector<double> jLine;
+
+        foreach (QVector<double> iLine, m_3dData[param][seccondAxisPosition])
         {
-            retval << jLine[firstAxisPosition];
+            jLine << iLine[firstAxisPosition];
         }
 
-        return retval;
+        return jLine;
     }
     else
     {
-        QVector<double> retval;
+        QVector<double> kLine;
+
         foreach (QVector<QVector<double>> kSlice, m_3dData[param])
         {
-            retval << kSlice[seccondAxisPosition][firstAxisPosition];
+            kLine << kSlice[seccondAxisPosition][firstAxisPosition];
         }
 
-        return retval;
+        return kLine;
     }
 }
 
-QVector<QVector<double>> data2D(QString param); //if dimension == 2
-QVector<QVector<double>> data2D(QString param, int iaxisPosition); //if dimension == 3
-QVector<QVector<QVector<double>>> data3D(QString param); //dimenion = 3
+QVector<QVector<double>>
+TecZone::data2D(QString param) //if dimension == 2
+{
+    if(m_dimension != 2)
+        return QVector<QVector<double>>();
+
+    return m_2dData[param];
+}
+
+QVector<QVector<double>>
+TecZone::data2D(QString param, int axisPosition, Axis returnAxis) //if dimension == 3
+{
+    if(m_dimension != 3)
+        return QVector<QVector<double>>();
+
+    if(returnAxis == Axis::K)
+    {
+        return m_3dData[param][axisPosition];
+    }
+    else if(returnAxis == Axis::J)
+    {
+        QVector<QVector<double>> jSlice;
+
+        foreach (QVector<QVector<double>> kSlice, m_3dData[param])
+        {
+            jSlice << kSlice[axisPosition];
+        }
+
+        return jSlice;
+    }
+    else
+    {
+        QVector<QVector<double>> iSlice;
+
+        foreach (QVector<QVector<double>> kSlice, m_3dData[param])
+        {
+            QVector<double> jLine;
+
+            foreach (QVector<double> iLine, kSlice)
+            {
+                jLine << iLine[axisPosition];
+            }
+
+            iSlice << jLine;
+        }
+
+        return iSlice;
+    }
+}
+
+QVector<QVector<QVector<double>>>
+TecZone::data3D(QString param) //dimenion = 3
+{
+    m_3dData[param];
+}
 
 
 

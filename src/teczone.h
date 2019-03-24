@@ -76,7 +76,7 @@ public:
     QVector<double> data1D(QString param, int firstAxisPosition, int seccondAxisPosition, Axis returnAxis); //if dimension == 3
 
     QVector<QVector<double>> data2D(QString param); //if dimension == 2
-    QVector<QVector<double>> data2D(QString param, int iaxisPosition); //if dimension == 3
+    QVector<QVector<double>> data2D(QString param, int iaxisPosition, Axis returnAxis); //if dimension == 3
     QVector<QVector<QVector<double>>> data3D(QString param); //dimenion = 3
 
     int dimension();
