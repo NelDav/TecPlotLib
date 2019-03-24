@@ -286,7 +286,7 @@ TecZone::data2D(QString param, int axisPosition, Axis returnAxis) //if dimension
 QVector<QVector<QVector<double>>>
 TecZone::data3D(QString param) //dimenion = 3
 {
-    m_3dData[param];
+    return m_3dData[param];
 }
 
 
