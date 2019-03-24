@@ -3,7 +3,6 @@
 TecZone::TecZone() :
     m_dimension(0)
 {
-
 }
 
 bool

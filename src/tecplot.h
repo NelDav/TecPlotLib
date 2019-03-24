@@ -3,6 +3,8 @@
 
 #include "tecplot_global.h"
 
+#include "teczone.h"
+
 #include <QObject>
 #include <QFile>
 
@@ -15,6 +17,7 @@ public:
     bool readFile(QFile file);
 
 private:
+    QVector<TecZone> m_Zones;
 
 };
 

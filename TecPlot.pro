@@ -9,7 +9,7 @@ QT       -= gui
 TARGET = TecPlot
 TEMPLATE = lib
 
-DEFINES += TECPLOT_LIBRARY
+DEFINES += TECPLOT_LIBRARY QT_USE_QSTRINGBUILDER
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -27,12 +27,14 @@ INCLUDEPATH += \
 
 SOURCES += \
         src/tecplot.cpp \
-    src/teczone.cpp
+    src/teczone.cpp \
+    src/teczonereader.cpp
 
 HEADERS += \
         src/tecplot.h \
         src/tecplot_global.h \
-    src/teczone.h
+    src/teczone.h \
+    src/teczonereader.h
 
 unix {
     target.path = /usr/lib

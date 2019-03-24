@@ -57,26 +57,45 @@ public:
     QVector<double> data1D(QString param);  //if dimension == 1
 
     /**
-     * @brief Get 1D-Slice from 2D-Data as Vector
+     * @brief Get 1D-Data from 2D-Data as Vector
      * @param param
      * @param axisPosition
      * @param returnAxis
-     * @return 1D-Slice as Vector
+     * @return 1D-Data as Vector
      */
     QVector<double> data1D(QString param, int axisPosition, Axis returnAxis); //if dimension == 2
 
     /**
-     * @brief Get 1D-Slice from 3D-Data as Vector
+     * @brief Get 1D-Data from 3D-Data as Vector
      * @param param
      * @param firstAxisPosition = if returnAxis==I : J else I
      * @param seccondAxisPosition = if returnAxis==K : J else K
      * @param returnAxis
-     * @return 1D-Slice as Vector
+     * @return 1D-Data as Vector
      */
     QVector<double> data1D(QString param, int firstAxisPosition, int seccondAxisPosition, Axis returnAxis); //if dimension == 3
 
+    /**
+     * @brief Get whole 2D-Data as Vector
+     * @param param
+     * @return 2D-Data as Vector
+     */
     QVector<QVector<double>> data2D(QString param); //if dimension == 2
-    QVector<QVector<double>> data2D(QString param, int iaxisPosition, Axis returnAxis); //if dimension == 3
+
+    /**
+     * @brief Get 2D-Slice from 3D-Data as Vector
+     * @param param
+     * @param axisPosition of the in returnAxis mentuned axis
+     * @param returnAxis = ortegonal axis of the slice
+     * @return 2D-Slice as Vector
+     */
+    QVector<QVector<double>> data2D(QString param, int axisPosition, Axis returnAxis); //if dimension == 3
+
+    /**
+     * @brief Get whole 3D-Data as Vector
+     * @param param
+     * @return 3D-Data as Vector
+     */
     QVector<QVector<QVector<double>>> data3D(QString param); //dimenion = 3
 
     int dimension();
