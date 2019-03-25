@@ -17,7 +17,13 @@ public:
     bool readFile(QFile file);
 
 private:
+    QString removeComments(QString input);
+    QStringList wordSplitter(QString text, QVector<QChar> splitChars, QVector<QChar> oneWordChar);
+
     QVector<TecZone> m_Zones;
+    QString m_Title;
+    QString m_FileType;
+    QStringList m_Variables;
 
 };
 

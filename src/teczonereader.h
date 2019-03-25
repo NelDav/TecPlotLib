@@ -5,15 +5,16 @@
 
 #include <QRunnable>
 
-class TecZoneReader : QRunnable
+class TecZoneReader : public QRunnable
 {
 public:
-    TecZoneReader(QString input);
+    TecZoneReader(QString input, QStringList var);
 
     void run() override;
 
 private:
     QString m_ZoneData;
+    QStringList m_Vars;
     TecZone m_Zone;
 };
 
